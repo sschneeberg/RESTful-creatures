@@ -1,1 +1,12 @@
 <p>dinos! wow!</p>
+
+<ul>
+    <% dinos.forEach((dino) => { %>
+        <li>
+            Name:
+            <%= dino.name %>, Type:
+                <%=dino.type %>
+        </li>
+        <% }) %>
+
+</ul>
