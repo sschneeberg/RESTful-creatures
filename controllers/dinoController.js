@@ -39,6 +39,14 @@ dinoRouter.get('/:id', (req, res) => {
 
 })
 
+dinoRouter.delete('/:id', (req, res) => {
+    const dinos = readDinos();
+    dinos.splice(req.params.id, 1);
+    fs.writeFileSync('./dinosaurs.json', JSON.stringify(dinos));
+    //make a new GET request
+    res.redirect('/dinosaurs');
+})
+
 dinoRouter.post('/', (req, res) => {
     const dinos = readDinos()
     const newDino = req.body;

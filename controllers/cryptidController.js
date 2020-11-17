@@ -42,6 +42,13 @@ cryptidRouter.post('/', (req, res) => {
     res.redirect('/cryptids');
 })
 
+cryptidRouter.get('cryptids/edit/:id', (req, res) => {
+    let cryptids = readCryptids();
+    let index = req.params.id;
+    let cryptid = cryptids[index];
+    res.render('crypids/edit', { cryptid });
+})
+
 
 
 module.exports = cryptidRouter;

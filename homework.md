@@ -20,6 +20,10 @@ Using the same app (just add to your existing code), create a mirror of what you
 
 ### 1. Add the `cryptids.json` file to your `crud_dinosaurs` directory. (That file is included in this repo.)
 
+```json
+[{ "name": "Loch Ness Monster", "img_url": "https://www.history.com/.image/t_share/MTU3ODc5MDg3MjQzNjAxMjI1/loch-ness-monster.jpg" }, { "name": "Big Foot", "img_url": "https://res.cloudinary.com/simpleview/image/upload/crm/eurekaca/patterson.gimlin0-b5b6c02e5056a36_b5b6c19f-5056-a36a-096e6e95925c7427.jpg" }, { "name": "Batsquatch", "img_url": "https://vignette.wikia.nocookie.net/cryptidz/images/c/c7/Batsquatch.jpg/revision/latest?cb=20100912164353" }, { "name": "Sharlie (Slimy Slim)", "img_url": "https://vignette.wikia.nocookie.net/cryptidz/images/6/6c/Swimsharlie.jpg" }]
+```
+
 Just copy it over to your existing dino code. You should already have the code you need to read and write to JSON files from the dinosaurs app.
 
 ### 2. Create the following routes:

@@ -6,12 +6,16 @@
     <input type="submit">
 </form>
 
+
 <ul>
     <% dinos.forEach((dino) => { %>
         <li>
             Name:
             <%= dino.name %>, Type:
                 <%=dino.type %>
+                    <form method="POST" action="/dinosaurs/<%= dinos.indexOf(dino) %>/?_method=DELETE">
+                        <input type="submit" value="DELETE">
+                    </form>
         </li>
         <% }) %>
 
