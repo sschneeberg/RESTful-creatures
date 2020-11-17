@@ -14,9 +14,14 @@ dinoRouter.get('/', (req, res) => {
     const dinoFilter = req.query.dinoFilter;
     if (dinoFilter && dinoFilter !== 'all') {
         dinos = dinos.filter(function(dino) {
-            return (dino.name.toLowerCase() === dinoFilter.toLowerCase());
+            if (dino.name.toLowerCase() === dinoFilter.toLowerCase()) {
+                return true;
+            } else if (dino.type.toLowerCase() === dinoFilter.toLowerCase()) {
+                return true;
+            } else {
+                return false;
+            }
         });
-
     }
 
     res.render('dinosaurs/index', { dinos });
