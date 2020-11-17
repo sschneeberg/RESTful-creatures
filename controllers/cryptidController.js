@@ -33,6 +33,13 @@ cryptidRouter.get('/:id', (req, res) => {
 
 })
 
+cryptidRouter.delete('/:id', (req, res) => {
+    const cryptids = readCryptids();
+    cryptids.splice(req.params.id, 1);
+    fs.writeFileSync('./cryptids.json', JSON.stringify(cryptids));
+    res.redirect('/cryptids');
+})
+
 cryptidRouter.post('/', (req, res) => {
     const cryptids = readCryptids()
     const newCryptid = req.body;

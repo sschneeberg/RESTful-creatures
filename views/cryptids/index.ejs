@@ -13,6 +13,8 @@
             <%= cryptid.name %>
         </h2>
         <img src="<%=cryptid.img_url %>" alt="<%= cryptid.name %>" title="<%=cryptid.name %>">
+        <form method='POST' action='/cryptids/<%= cryptids.indexOf(cryptid) %>/?_method=DELETE'>
+            <input type="submit" value="DELETE">
+        </form>
         <% }) %>
-
 </div>
