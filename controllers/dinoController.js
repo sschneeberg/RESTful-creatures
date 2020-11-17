@@ -31,6 +31,13 @@ dinoRouter.get('/new', (req, res) => {
     res.render('dinosaurs/new')
 })
 
+dinoRouter.get('/edit/:id', (req, res) => {
+    let dinos = readDinos();
+    let index = req.params.id;
+    let dino = dinos[index];
+    res.render('dinosaurs/edit', { dino, index });
+})
+
 dinoRouter.get('/:id', (req, res) => {
     const dinos = readDinos()
     const index = parseInt(req.params.id);
@@ -56,6 +63,14 @@ dinoRouter.post('/', (req, res) => {
     res.redirect('/dinosaurs');
 })
 
+dinoRouter.put('/:id', (req, res) => {
+    const dinos = readDinos();
+    const changedDino = req.body;
+    dinos[req.params.id] = changedDino;
+    fs.writeFileSync('./dinosaurs.json', JSON.stringify(dinos));
+    res.redirect('/dinosaurs');
+
+})
 
 
 module.exports = dinoRouter;

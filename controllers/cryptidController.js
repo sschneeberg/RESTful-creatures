@@ -25,6 +25,14 @@ cryptidRouter.get('/new', (req, res) => {
     res.render('cryptids/new');
 })
 
+cryptidRouter.get('/edit/:id', (req, res) => {
+    let cryptids = readCryptids();
+    let index = req.params.id;
+    let cryptid = cryptids[index];
+    res.render('cryptids/edit', { cryptid, index });
+
+})
+
 cryptidRouter.get('/:id', (req, res) => {
     const cryptids = readCryptids()
     const index = parseInt(req.params.id);
@@ -49,11 +57,13 @@ cryptidRouter.post('/', (req, res) => {
     res.redirect('/cryptids');
 })
 
-cryptidRouter.get('cryptids/edit/:id', (req, res) => {
-    let cryptids = readCryptids();
-    let index = req.params.id;
-    let cryptid = cryptids[index];
-    res.render('crypids/edit', { cryptid });
+cryptidRouter.put('/:id', (req, res) => {
+    const cryptids = readCryptids();
+    const changedCryptid = req.body;
+    cryptids[req.params.id] = changedCryptid;
+    fs.writeFileSync('./cryptids.json', JSON.stringify(cryptids));
+    res.redirect('/cryptids');
+
 })
 
 
