@@ -1,0 +1,18 @@
+<p>~spOooOooky~</p>
+
+<form method="GET" action="/cryptids">
+    <label for="cryptidFilter">Search! By Name!</label>
+    <input id="cryptidFilter" type="text" name="cryptidFilter">
+    <input type="submit">
+</form>
+
+<div>
+    <% cryptids.forEach((cryptid) => { %>
+        <h2>
+            Name:
+            <%= cryptid.name %>
+        </h2>
+        <img src="<%=cryptid.img_url %>" alt="<%= cryptid.name %>" title="<%=cryptid.name %>">
+        <% }) %>
+
+</div>

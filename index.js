@@ -12,6 +12,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/dinosaurs', require('./controllers/dinoController'));
+app.use('/cryptids', require('./controllers/cryptidController'));
 
 
 

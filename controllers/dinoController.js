@@ -9,10 +9,18 @@ function readDinos() {
 
 dinoRouter.get('/', (req, res) => {
     const dinoData = fs.readFileSync('./dinosaurs.json');
-    const dinos = JSON.parse(dinoData);
-    res.render('dinosaurs/index', { dinos });
+    let dinos = JSON.parse(dinoData);
 
-})
+    const dinoFilter = req.query.dinoFilter;
+    if (dinoFilter && dinoFilter !== 'all') {
+        dinos = dinos.filter(function(dino) {
+            return (dino.name.toLowerCase() === dinoFilter.toLowerCase());
+        });
+
+    }
+
+    res.render('dinosaurs/index', { dinos });
+});
 
 dinoRouter.get('/new', (req, res) => {
     res.render('dinosaurs/new')
